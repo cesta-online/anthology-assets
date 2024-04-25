@@ -1,3 +1,9 @@
+/* Header */
+#title-block-header .session {
+  font-size: 1.2em;
+  margin-bottom: 0px;
+}
+
 /* Project Details */
 .project-details-container {
   display: block;
@@ -32,6 +38,8 @@
 .project-description-container .project-description {
   font-size: 0.9rem;
 }
+
+/* Body */
 
 .article-author p:before {
   content: "by ";
