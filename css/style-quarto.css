@@ -4,6 +4,12 @@
   margin-bottom: 0px;
 }
 
+.header-img-container img {
+  width: 100%;
+  height: "300px";
+  object-fit: cover;
+}
+
 /* Project Details */
 .project-details-container {
   display: block;
