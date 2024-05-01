@@ -4,9 +4,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
 @font-face {
   font-family: "Stanford";
-  src: url("https://github.com/cesta-online/anthology-assets/raw/main/fonts/stanford.woff")
+  src: url("https://cdn.jsdelivr.net/gh/cesta-online/anthology-assets@latest/fonts/stanford.woff")
       format("woff"),
-    url("https://github.com/cesta-online/anthology-assets/raw/main/fonts/stanford.ttf")
+    url("https://cdn.jsdelivr.net/gh/cesta-online/anthology-assets@latest/fonts/stanford.ttf")
       format("truetype");
   font-weight: 300;
   font-display: swap;
