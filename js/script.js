@@ -79,3 +79,33 @@ function insertFooterElement() {
   const body = document.querySelector("body");
   body.insertAdjacentHTML("beforeend", footerHTML);
 }
+
+function navigationListing(containerSelector, jsonFilePath) {
+  fetch(jsonFilePath)
+    .then((response) => response.json())
+    .then((data) => {
+      const containerElement = document.querySelector(containerSelector);
+      data.forEach((item) => {
+        const listItem = document.createElement("a");
+        listItem.setAttribute("href", item.link);
+        listItem.classList.add("list-item-link");
+        listItem.innerHTML = `
+        <div class="list-item-container">
+          <div class="list-item-text-container">
+            <h2 class="list-item-heading">${item.title}</h2>
+            <p class="list-item-description">${item.description}</p>
+          </div>
+          ${
+            item.img
+              ? `<div class="list-item-img-container">
+              <img src="${item.img}" alt="${item.title}"></img>
+              </div>`
+              : ""
+          }
+        </div>
+        `;
+        containerElement.appendChild(listItem);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
