@@ -219,15 +219,35 @@ body {
   padding-right: var(--padding-right-mobile);
 }
 
+/* Footer */
+
 .footer {
-  padding-top: 1rem;
   padding-bottom: 1rem;
   color: white;
   background-color: var(--black-100); /* Cardinal red */
   width: 100%;
 }
 
+.cesta-footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: white;
+  background-color: var(--cesta-plum);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: var(--padding-left-mobile);
+  padding-right: var(--padding-right-mobile);
+}
+
+.cesta-footer .cesta-footer-text-container {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
 .footer-container {
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -330,6 +350,12 @@ body {
   }
 
   /* Footer */
+
+  .cesta-footer {
+    flex-direction: row;
+    align-items: center;
+  }
+
   .footer-menu {
     flex-direction: column;
   }
@@ -359,8 +385,13 @@ body {
     padding-right: var(--padding-right-desktop);
   }
 
+  .cesta-footer {
+    padding-left: var(--padding-left-desktop);
+    padding-right: var(--padding-right-desktop);
+  }
+
   .footer-container {
-    padding-top: 1rem;
+    padding-top: 2rem;
     flex-direction: row;
     padding-left: var(--padding-left-desktop);
     padding-right: var(--padding-right-desktop);

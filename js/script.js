@@ -59,6 +59,14 @@ function insertHeaderElement() {
 function insertFooterElement() {
   const footerHTML = `
     <footer class="footer">
+      <div class="cesta-footer">
+        <div class="cesta-footer-img-container">
+          <img src="assets/remote/imgs/cesta_logo.png" />
+        </div>
+        <div class="cesta-footer-text-container">
+          <p>CESTA is committed to shaping future humanities research and teaching through openness to new digital technologies, scholarly questions and collaborative opportunities.</p>
+        </div>
+      </div>
       <div class="footer-container">
         <div class="footer-logo">
           <a href="https://www.stanford.edu">Stanford<br>University</a>
