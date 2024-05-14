@@ -1,8 +1,21 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   insertHeaderElement();
-
+  setupMobileMenuToggle();
   insertFooterElement();
 });
+
+function setupMobileMenuToggle() {
+  const menuButton = document.querySelector("#mobile-menu-btn button");
+  const mobileMenu = document.querySelector("#mobile-menu");
+
+  menuButton.addEventListener("click", () => {
+    if (mobileMenu.style.maxHeight) {
+      mobileMenu.style.maxHeight = null;
+    } else {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+    }
+  });
+}
 
 function insertHeaderElement() {
   const headerHTML = `
@@ -15,13 +28,32 @@ function insertHeaderElement() {
       </div>
       <nav>
         <div><a href="/">CESTA Research Anthology</a></div>
-        <div id="menu"><a href="/about">About</a><a href="/submit">Submit</a></div>
+        <div>
+          <div id="menu">
+            <ul>
+              <li><a href="/about">About</a></li>
+              <li><a href="/submit">Submit</a></li>
+            </ul>
+          </div>
+          <div id="mobile-menu-btn">
+            <button>
+              <svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2 s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2 S29.104,22,28,22z"/></svg>
+            </button>
+          </div>
+          
+        </div>
       </nav>
+      <div id="mobile-menu" class="hidden"></div>
     </header>
   `;
 
   const body = document.querySelector("body");
   body.insertAdjacentHTML("afterbegin", headerHTML);
+
+  // Clone the menu items and append to mobile-menu
+  const menuItems = document.querySelector("#menu ul").cloneNode(true);
+  const mobileMenu = document.querySelector("#mobile-menu");
+  mobileMenu.appendChild(menuItems);
 }
 
 function insertFooterElement() {
@@ -32,7 +64,7 @@ function insertFooterElement() {
           <a href="https://www.stanford.edu">Stanford<br>University</a>
         </div>
         <div class="footer-links">
-          <nav aria-label="global footer menu">
+          <nav aria-label="global footer menu" class="footer-menu">
             <ul class="links-list">
               <li>
                 <a href="https://www.stanford.edu">Stanford Home</a>
