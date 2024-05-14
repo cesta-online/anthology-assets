@@ -61,7 +61,7 @@ function insertFooterElement() {
     <footer class="footer">
       <div class="cesta-footer">
         <div class="cesta-footer-img-container">
-          <img src="assets/remote/imgs/cesta_logo.png" />
+          <img src="https://cdn.jsdelivr.net/gh/cesta-online/anthology-assets@latest/imgs/cesta_logo.png" alt="CESTA Logo" />
         </div>
         <div class="cesta-footer-text-container">
           <p>CESTA is committed to shaping future humanities research and teaching through openness to new digital technologies, scholarly questions and collaborative opportunities.</p>
