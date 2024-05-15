@@ -11,19 +11,21 @@
 }
 
 /* Project Details */
-.project-details-container {
-  display: block;
-  border-radius: 0.25rem;
-  background-color: #f0dfee;
-  padding: 1rem;
-  margin-bottom: 2rem;
+
+.project-details-container > div:first-child {
   margin-top: 1rem;
+}
+
+.project-details-container > div:last-child {
+  margin-bottom: 1rem;
 }
 
 .project-members-container,
 .project-description-container {
   display: block;
   margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f0dfee;
 }
 
 .project-member {
