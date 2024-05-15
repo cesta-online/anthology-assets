@@ -31,7 +31,6 @@ function insertHeaderElement() {
         <div>
           <div id="menu">
             <ul>
-              <li><a href="/about">About</a></li>
               <li><a href="/submit">Submit</a></li>
             </ul>
           </div>
