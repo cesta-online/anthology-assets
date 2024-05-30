@@ -27,11 +27,11 @@ function insertHeaderElement() {
         <a href="https://cesta.stanford.edu" target="_blank"><span id="cesta-logo-container"><span id="stanford-type">Stanford</span><span id="cesta-expansion">Center for Spatial and Textual Analysis </span></span></a>
       </div>
       <nav>
-        <div><a href="/">CESTA Research Anthology</a></div>
+        <div><a href="/anthology">CESTA Research Anthology</a></div>
         <div>
           <div id="menu">
             <ul>
-              <li><a href="/submit">Submit</a></li>
+              <li><a href="/anthology/submit">Submit</a></li>
             </ul>
           </div>
           <div id="mobile-menu-btn">
