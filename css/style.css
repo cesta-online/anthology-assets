@@ -12,6 +12,7 @@
   font-display: swap;
 }
 :root {
+  --cesta-gradient: linear-gradient(to right, rgb(100, 100, 102), rgb(50, 30, 20));
   --cardinal-red: #8c1515;
   --cardinal-red-light: #b83a4b;
   --cardinal-red-dark: #820000;
@@ -140,7 +141,7 @@ body {
   padding-bottom: 0.8rem;
   padding-left: var(--padding-left-mobile);
   padding-right: var(--padding-right-mobile);
-  background-color: var(--digital-red);
+  background-image: var(--cesta-gradient);
   display: flex;
   justify-content: space-between;
   align-items: center;
