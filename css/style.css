@@ -12,7 +12,8 @@
   font-display: swap;
 }
 :root {
-  --cesta-gradient: linear-gradient(to right, rgb(100, 100, 102), rgb(50, 30, 20));
+  --cesta-gradient: linear-gradient(to right,  rgb(126, 42, 42), rgb(125, 106, 155));
+  --cesta-hot-pink: rgb(247, 108, 117);
   --cardinal-red: #8c1515;
   --cardinal-red-light: #b83a4b;
   --cardinal-red-dark: #820000;
@@ -233,7 +234,7 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: white;
-  background-color: var(--cesta-plum);
+  background-image: var(--cesta-gradient);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -243,8 +244,15 @@ body {
 }
 
 .cesta-footer .cesta-footer-text-container {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 600;
+}
+
+.cesta-footer-img-container {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
 }
 
 .footer-container {
