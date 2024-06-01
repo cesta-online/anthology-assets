@@ -14,7 +14,7 @@ The links for the assets served by jsDelivr CDN are as follows:
 ## Updating JSDelivr CDN to serve the latest assets
 
 - To update the assets served by jsDelivr CDN, push the changes to the `main` branch of this repository.
-- Create a new release in the repository with the updated assets.
+- Create a [new release](https://github.com/cesta-online/anthology-assets/releases) in the repository with the updated assets.
 - Use the Purge CDN Cache Tool in jsDelivr to serve the latest assets. The link to purge cache is [https://www.jsdelivr.com/tools/purge](https://www.jsdelivr.com/tools/purge)
 - Enter the following urls and purge the cache to deliver the latest assets.
 
