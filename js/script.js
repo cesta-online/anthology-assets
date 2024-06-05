@@ -1,117 +1,20 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   insertHeaderElement();
-  insertTOCElement().then(() => {
-    generateTOC(), makeTOCSticky();
-  });
+  setupMobileMenuToggle();
   insertFooterElement();
-  createBreadcrumb();
 });
 
-function insertTOCElement() {
-  return new Promise((resolve, reject) => {
-    try {
-      // Create a new table-of-contents element
-      var toc = document.createElement("table-of-contents");
-      toc.innerHTML = `
-      <h5>Contents</h5>
-      <div class="toc-contents"></div>
-      `;
+function setupMobileMenuToggle() {
+  const menuButton = document.querySelector("#mobile-menu-btn button");
+  const mobileMenu = document.querySelector("#mobile-menu");
 
-      // Get the main element and the first article element
-      var main = document.querySelector("main");
-      var article = document.querySelector("article");
-
-      // Insert the table-of-contents before the first article
-      if (article) {
-        article.prepend(toc);
-      }
-
-      resolve();
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
-
-function generateTOC() {
-  const toc = document.querySelector(".toc-contents");
-  const article = document.querySelector("article");
-  const tags = ["sub-article-title", "h1", "h2", "h3"];
-  const selectors = tags.join(", ");
-  let headings = Array.from(article.querySelectorAll(selectors));
-  let activeId = null;
-
-  const addActiveClass = (id) => {
-    if (activeId) {
-      const activeTocLink = toc.querySelector(`[href="#${activeId}"]`);
-      if (activeTocLink) {
-        activeTocLink.classList.remove("active-toc-item");
-      }
-    }
-
-    const tocLink = toc.querySelector(`[href="#${id}"]`);
-    if (tocLink) {
-      tocLink.classList.add("active-toc-item");
-    }
-
-    activeId = id;
-  };
-
-  const ul = document.createElement("ul"); // Single ul for all li
-  toc.appendChild(ul);
-
-  headings.forEach((heading, index) => {
-    const id = `heading-${index}`;
-    heading.setAttribute("id", id);
-
-    const li = document.createElement("li");
-    const tocLink = document.createElement("a");
-    tocLink.setAttribute("href", `#${id}`);
-    tocLink.textContent = heading.textContent;
-    li.appendChild(tocLink);
-
-    const tagIndex = tags.indexOf(heading.tagName.toLowerCase());
-
-    // Add a class to the li to indicate its level
-    li.className = `level-${tagIndex + 1}`;
-
-    ul.appendChild(li); // Append all li to the single ul
-  });
-
-  // Add active class to the first heading initially
-  addActiveClass("heading-0");
-
-  window.addEventListener("scroll", () => {
-    let topHeading = null;
-
-    headings.forEach((heading, index) => {
-      const bounding = heading.getBoundingClientRect();
-
-      if (
-        bounding.top >= 0 &&
-        (topHeading === null ||
-          bounding.top < topHeading.getBoundingClientRect().top)
-      ) {
-        topHeading = heading;
-      }
-    });
-
-    if (topHeading) {
-      addActiveClass(topHeading.getAttribute("id"));
-    }
-  });
-}
-
-function makeTOCSticky() {
-  window.onscroll = function () {
-    var toc = document.querySelector("table-of-contents");
-    if (window.scrollY > 100) {
-      // change 100 to the point you want it to stick
-      toc.classList.add("sticky");
+  menuButton.addEventListener("click", () => {
+    if (mobileMenu.style.maxHeight) {
+      mobileMenu.style.maxHeight = null;
     } else {
-      toc.classList.remove("sticky");
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
     }
-  };
+  });
 }
 
 function insertHeaderElement() {
@@ -124,25 +27,51 @@ function insertHeaderElement() {
         <a href="https://cesta.stanford.edu" target="_blank"><span id="cesta-logo-container"><span id="stanford-type">Stanford</span><span id="cesta-expansion">Center for Spatial and Textual Analysis </span></span></a>
       </div>
       <nav>
-        <div><a href="/">CESTA Research Anthology</a></div>
-        <div id="menu"><a href="/about">About</a><a href="/submit">Submit</a></div>
+        <div><a href="/anthology">CESTA Research Anthology</a></div>
+        <div>
+          <div id="menu">
+            <ul>
+              <li><a href="/anthology/submit">Submit</a></li>
+            </ul>
+          </div>
+          <div id="mobile-menu-btn">
+            <button>
+              <svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2 s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2 S29.104,22,28,22z"/></svg>
+            </button>
+          </div>
+          
+        </div>
       </nav>
+      <div id="mobile-menu" class="hidden"></div>
     </header>
   `;
 
   const body = document.querySelector("body");
   body.insertAdjacentHTML("afterbegin", headerHTML);
+
+  // Clone the menu items and append to mobile-menu
+  const menuItems = document.querySelector("#menu ul").cloneNode(true);
+  const mobileMenu = document.querySelector("#mobile-menu");
+  mobileMenu.appendChild(menuItems);
 }
 
 function insertFooterElement() {
   const footerHTML = `
     <footer class="footer">
+      <div class="cesta-footer">
+        <div class="cesta-footer-img-container">
+          <img src="https://cdn.jsdelivr.net/gh/cesta-online/anthology-assets@latest/imgs/cesta_logo.png" alt="CESTA Logo" />
+        </div>
+        <div class="cesta-footer-text-container">
+          <p>CESTA is committed to shaping future humanities research and teaching through openness to new digital technologies, scholarly questions and collaborative opportunities.</p>
+        </div>
+      </div>
       <div class="footer-container">
         <div class="footer-logo">
           <a href="https://www.stanford.edu">Stanford<br>University</a>
         </div>
         <div class="footer-links">
-          <nav aria-label="global footer menu">
+          <nav aria-label="global footer menu" class="footer-menu">
             <ul class="links-list">
               <li>
                 <a href="https://www.stanford.edu">Stanford Home</a>
@@ -190,30 +119,32 @@ function insertFooterElement() {
   body.insertAdjacentHTML("beforeend", footerHTML);
 }
 
-function createBreadcrumb() {
-  const article = document.querySelector("article");
-  if (!article) return;
-
-  const pageTitle = document.querySelector("article-title").textContent;
-  const urlParts = window.location.pathname.split("/").filter((part) => part);
-  let breadcrumb = '<a href="/" class="breadcrumb-home">Home</a>';
-
-  let currentPath = "";
-  urlParts.forEach((part, index) => {
-    currentPath += "/" + part;
-    if (index < urlParts.length - 1) {
-      const words = part.split(/[^a-zA-Z0-9]/g);
-      const branch = words
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-      breadcrumb += ` <span class="breadcrumb-separator">></span> <a href="${currentPath}" class="breadcrumb-link">${branch}</a>`;
-    }
-  });
-
-  breadcrumb += ` <span class="breadcrumb-separator">></span> <span class="breadcrumb-title">${pageTitle}</span>`;
-
-  const breadcrumbElement = document.createElement("div");
-  breadcrumbElement.className = "breadcrumb";
-  breadcrumbElement.innerHTML = breadcrumb;
-  article.parentNode.insertBefore(breadcrumbElement, article);
+function navigationListing(containerSelector, jsonFilePath) {
+  fetch(jsonFilePath)
+    .then((response) => response.json())
+    .then((data) => {
+      const containerElement = document.querySelector(containerSelector);
+      data.forEach((item) => {
+        const listItem = document.createElement("a");
+        listItem.setAttribute("href", item.link);
+        listItem.classList.add("list-item-link");
+        listItem.innerHTML = `
+        <div class="list-item-container">
+          <div class="list-item-text-container">
+            <h2 class="list-item-heading">${item.title}</h2>
+            <p class="list-item-description">${item.description}</p>
+          </div>
+          ${
+            item.img
+              ? `<div class="list-item-img-container">
+              <img src="${item.img}" alt="${item.title}"></img>
+              </div>`
+              : ""
+          }
+        </div>
+        `;
+        containerElement.appendChild(listItem);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
 }
