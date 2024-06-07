@@ -101,3 +101,12 @@
   font-size: 0.9em;
   line-height: 1.8em;
 }
+
+#quarto-document-content a {
+  color: #006cb8;
+  transition: color 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+#quarto-document-content a:hover {
+  color: #2e2d29;
+}

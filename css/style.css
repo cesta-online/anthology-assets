@@ -12,7 +12,11 @@
   font-display: swap;
 }
 :root {
-  --cesta-gradient: linear-gradient(to right,  rgb(126, 42, 42), rgb(125, 106, 155));
+  --cesta-gradient: linear-gradient(
+    to right,
+    rgb(126, 42, 42),
+    rgb(125, 106, 155)
+  );
   --cesta-hot-pink: rgb(247, 108, 117);
   --cardinal-red: #8c1515;
   --cardinal-red-light: #b83a4b;
@@ -96,7 +100,7 @@ body {
 /* Header */
 
 .header #stanford-band {
-  background-color: var(--black-100);
+  background-color: var(--cardinal-red);
   height: 30px;
   padding-left: var(--padding-left-mobile);
 }
@@ -226,7 +230,7 @@ body {
 .footer {
   padding-bottom: 1rem;
   color: white;
-  background-color: var(--black-100); /* Cardinal red */
+  background-color: var(--cardinal-red); /* Cardinal red */
   width: 100%;
 }
 
