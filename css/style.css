@@ -46,8 +46,8 @@
   --tablet-min-breakpoint: 769px;
   --tablet-max-breakpoint: 1024px;
   --desktop-breakpoint: 1025px;
-  --padding-left-desktop: 10rem;
-  --padding-right-desktop: 10rem;
+  --padding-left-desktop: 17rem;
+  --padding-right-desktop: 17rem;
   --padding-left-mobile: 2rem;
   --padding-right-mobile: 2rem;
 }
