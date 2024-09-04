@@ -92,8 +92,8 @@ body {
 }
 
 .list-item-img-container img {
-  height: 400px;
-  width: 150px;
+  height: %100;
+  width: %100;
   object-fit: cover;
 }
 
