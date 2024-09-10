@@ -116,17 +116,23 @@
   color: #2e2d29;
 }
 
-.navigation-links {
+#quarto-document-content.navigation-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Spread the links evenly across the row */
+  font-family: inherit; /* Use the same font as the rest of the page */
   padding: 1em 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #ccc; /* Optional, adds a line above the links */
   margin-top: 2em;
 }
 
 .navigation-links .nav-link {
   flex: 1;
   text-align: center;
+}
+
+.navigation-links .nav-link a {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit color from the page or set a specific color */
 }
 
 .navigation-links .nav-link.prev {
@@ -136,4 +142,5 @@
 .navigation-links .nav-link.next {
   text-align: right;
 }
+
 
