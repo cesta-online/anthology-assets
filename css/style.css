@@ -93,7 +93,7 @@ body {
 
 .list-item-img-container img {
   height: 100%;
-  width: 1500px;
+  width: 100%;
   object-fit: cover;
 }
 
