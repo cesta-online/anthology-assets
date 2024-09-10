@@ -17,11 +17,10 @@
   font-weight: 400;
   margin-bottom: 2px;
 }
-#title-block-header .prj-lead {
+.prj-lead {
   font-weight: 400; 
   color: 734675; /* Plum purple color */ /* Add some space between the two titles */
 }
-
 .header-img-container img {
   width: 100%;
   height: 300px;
