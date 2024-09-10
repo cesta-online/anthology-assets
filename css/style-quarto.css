@@ -16,6 +16,11 @@
 #title-block-header .title {
   font-weight: 400;
 }
+#title-block-header .prj-lead {
+  font-size: 2em; /* Adjust size as needed to match the main title */
+  color: #620059; /* Plum purple color */
+  margin-top: 0.5rem; /* Add some space between the two titles */
+}
 
 .header-img-container img {
   width: 100%;
