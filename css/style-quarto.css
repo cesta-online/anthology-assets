@@ -15,7 +15,7 @@
 
 #title-block-header .title {
   font-weight: 400;
-  margin-bottom: 2px;
+  margin-bottom: 0;
 }
 .prj-lead {
   font-weight: 400; 
@@ -115,3 +115,25 @@
 #quarto-document-content a:hover {
   color: #2e2d29;
 }
+
+.navigation-links {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+  border-top: 1px solid #ccc;
+  margin-top: 2em;
+}
+
+.navigation-links .nav-link {
+  flex: 1;
+  text-align: center;
+}
+
+.navigation-links .nav-link.prev {
+  text-align: left;
+}
+
+.navigation-links .nav-link.next {
+  text-align: right;
+}
+
